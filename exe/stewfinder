@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'stewfinder'
+
+Stewfinder.new(ARGV.first).find
