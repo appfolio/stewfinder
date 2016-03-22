@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
-abort('Missing Filename!') if ARGV.size != 1
-
 require 'stewfinder'
 
-Stewfinder.new(ARGV.first).find
+filename = ARGV.first
+filename = Dir.pwd if filename.nil?
+
+Stewfinder.new(filename).find
