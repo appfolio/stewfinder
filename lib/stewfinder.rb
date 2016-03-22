@@ -46,15 +46,15 @@ class Stewfinder
           stewards << s
         when Hash
           begin
-            if s['include'].to_a.any? { |i| File.fnmatch?(i.to_s, @name) } &&
-               s['exclude'].to_a.none? { |i| File.fnmatch?(i.to_s, @name) }
+            if [s['include']].flatten.any? { |i| File.fnmatch?(i.to_s, @name) } &&
+               [s['exclude']].flatten.none? { |i| File.fnmatch?(i.to_s, @name) }
               stewards << s['github_username']
             end
           rescue
-            puts "Invalid Format 1: #{s.inspect} in file #{x}"
+            puts "Invalid Format: #{s.inspect} in file #{x}"
           end
         else
-          puts "Invalid Format 2: #{s.inspect} in file #{x}"
+          puts "Invalid Format: #{s.inspect} in file #{x}"
         end
       end
     end
