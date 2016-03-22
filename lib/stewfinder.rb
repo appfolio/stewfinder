@@ -20,24 +20,22 @@ class Stewfinder
   private
 
   def get_stewfiles
-    filename = @name.split('/')
     stewfiles = []
-    while filename.size > 1
-      filename.delete_at(-1)
-      files = `ls #{filename.join('/')}`.split("\n").inspect
-
-      next unless files.include?('stewards.yml')
-      stewfiles << "#{filename.join('/')}/stewards.yml"
+    cur_path = Pathname(@name)
+    while cur_path
+      stewfiles << File.join(cur_path, 'stewards.yml') if File.exist?(File.join(cur_path, 'stewards.yml'))
+      prev_path = cur_path
+      cur_path = cur_path.split.first
+      break if cur_path == prev_path
     end
-
     stewfiles
   end
 
   def get_stewards
     stewards = []
     stewfiles = get_stewfiles
-    stewfiles.each do |x|
-      steward_hash = YAML.load(`cat #{x}`)
+    stewfiles.each do |file|
+      steward_hash = YAML.load_file(file)
       next unless steward_hash
 
       steward_hash['stewards'].each do |s|
@@ -51,10 +49,10 @@ class Stewfinder
               stewards << s['github_username']
             end
           rescue
-            puts "Invalid Format: #{s.inspect} in file #{x}"
+            puts "Invalid Format: #{s.inspect} in file #{file}"
           end
         else
-          puts "Invalid Format: #{s.inspect} in file #{x}"
+          puts "Invalid Format: #{s.inspect} in file #{file}"
         end
       end
     end

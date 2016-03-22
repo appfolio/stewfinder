@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 require 'stewfinder'
 
-filename = ARGV.first
-filename = Dir.pwd if filename.nil?
+filename = ARGV[0] ? File.absolute_path(ARGV[0]) : Dir.pwd
 
 Stewfinder.new(filename).find
