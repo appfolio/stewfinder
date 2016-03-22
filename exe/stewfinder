@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+abort('Missing Filename!') if ARGV.size != 1
 
 require 'stewfinder'
 
