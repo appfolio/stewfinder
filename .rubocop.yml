@@ -1,0 +1,33 @@
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 1024
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Metrics/LineLength:
+  Max: 512
+
+Metrics/MethodLength:
+  Max: 128
+
+Metrics/PerceivedComplexity:
+  Max: 8
+
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
