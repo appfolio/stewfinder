@@ -7,14 +7,15 @@ Gem::Specification.new do |spec|
   spec.name          = 'stewfinder'
   spec.version       = Stewfinder::VERSION
   spec.authors       = ['Alexander Standke']
-  spec.email         = ['xanderstrike@gmail.com']
+  spec.email         = ['alexander.standke@appfolio.com']
   spec.summary       = "Get it while it's hot!"
   spec.description   = 'Finds stewards for a given file.'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/appfolio/stewfinder'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.bindir        = 'exe'
+  spec.executables   = ['stewfinder']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
