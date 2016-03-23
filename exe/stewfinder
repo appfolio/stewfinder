@@ -3,4 +3,4 @@ require 'stewfinder'
 
 filename = ARGV[0] ? File.absolute_path(ARGV[0]) : Dir.pwd
 
-Stewfinder.new(filename).find
+Stewfinder.new(filename).print_stewards
