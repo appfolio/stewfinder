@@ -13,7 +13,7 @@ class Stewfinder
     if stewards.empty?
       puts 'None'
     else
-      puts ' - ' + stewards.uniq.sort.join("\n - ")
+      puts ' - ' + stewards.uniq.join("\n - ")
     end
   end
 
