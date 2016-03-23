@@ -7,13 +7,17 @@ class Stewfinder
   end
 
   def find
-    stewards = get_stewards
+    get_stewards.uniq
+  end
+
+  def print_stewards
+    stewards = find
 
     puts 'Stewards for this file:'
     if stewards.empty?
       puts 'None'
     else
-      puts ' - ' + stewards.uniq.sort.join("\n - ")
+      puts ' - ' + stewards.join("\n - ")
     end
   end
 
