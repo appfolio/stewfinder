@@ -28,11 +28,11 @@ module Stewfinder
     def get_stewfiles
       stewfiles = []
       cur_path = Pathname(@name)
-      while cur_path
+      prev_path = nil
+      while cur_path != prev_path
         stewfiles << File.join(cur_path, 'stewards.yml') if File.exist?(File.join(cur_path, 'stewards.yml'))
         prev_path = cur_path
         cur_path = cur_path.split.first
-        break if cur_path == prev_path
       end
       stewfiles
     end
