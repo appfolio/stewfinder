@@ -1,4 +1,3 @@
-require 'stewfinder/version'
 require 'yaml'
 
 class Stewfinder
