@@ -9,9 +9,12 @@ module Stewfinder
     stewfinder: A tool to help discover code stewards.
 
     Usage:
-      stewfinder [PATH]
+      stewfinder [options] [PATH]
       stewfinder -h | --help
       stewfinder --version
+
+    Options:
+      --sort  Sort the output list.
 
     When PATH isn't provided stewfinder will use the present working directory.
     DOC
@@ -22,7 +25,8 @@ module Stewfinder
 
     def run
       options = Docopt.docopt(DOC, version: VERSION)
-      Finder.new(File.absolute_path(options['PATH'] || Dir.pwd)).print_stewards
+      finder = Finder.new(File.absolute_path(options['PATH'] || Dir.pwd))
+      finder.print_stewards(options['--sort'])
       @exit_status
     rescue Docopt::Exit => exc
       exit_with_status(exc.message, exc.class.usage != '')

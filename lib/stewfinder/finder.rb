@@ -10,13 +10,14 @@ module Stewfinder
       get_stewards.uniq
     end
 
-    def print_stewards
+    def print_stewards(sort)
       stewards = find
 
-      puts 'Stewards for this file:'
+      puts "Stewards for #{@name}:"
       if stewards.empty?
         puts 'None'
       else
+        stewards = stewards.sort! if sort
         puts ' - ' + stewards.join("\n - ")
       end
     end
