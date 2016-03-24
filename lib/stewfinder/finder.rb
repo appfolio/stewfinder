@@ -3,6 +3,7 @@ require 'yaml'
 module Stewfinder
   class Finder
     def initialize(filename)
+      raise StandardError, "Invalid file #{filename}" unless File.exist?(filename)
       @name = filename
     end
 

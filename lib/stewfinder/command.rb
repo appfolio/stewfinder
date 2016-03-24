@@ -30,6 +30,8 @@ module Stewfinder
       @exit_status
     rescue Docopt::Exit => exc
       exit_with_status(exc.message, exc.class.usage != '')
+    rescue StandardError => exc
+      exit_with_status(exc.message)
     end
 
     private
