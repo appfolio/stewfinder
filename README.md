@@ -1,6 +1,8 @@
-# Stewfinder
+# Stewfinder 
 
 This gem provides command line utilities for working locally with [Ladle](https://github.com/appfolio/ladle) style stewards files.
+
+[![Circle CI](https://circleci.com/gh/appfolio/stewfinder/tree/master.svg?style=svg)](https://circleci.com/gh/appfolio/stewfinder/tree/master)
 
 ## Installation
 
