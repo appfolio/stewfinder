@@ -14,13 +14,15 @@ module Stewfinder
     def print_stewards(sort)
       stewards = find
 
-      puts "Stewards for #{@name}:"
+      str = "Stewards for #{@name}:\n"
       if stewards.empty?
-        puts 'None'
+        str += 'None'
       else
         stewards = stewards.sort! if sort
-        puts ' - ' + stewards.join("\n - ")
+        str += ' - ' + stewards.join("\n - ")
       end
+
+      puts str
     end
 
     private

@@ -18,6 +18,7 @@ module Stewfinder
 
     When PATH isn't provided stewfinder will use the present working directory.
     DOC
+          .freeze
 
     def initialize
       @exit_status = 0

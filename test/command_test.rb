@@ -1,4 +1,6 @@
 require 'test_helper'
 
-class CommandTest < MiniTest::Test
+module StewFinder
+  class CommandTest < MiniTest::Test
+  end
 end
