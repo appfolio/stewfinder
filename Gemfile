@@ -4,5 +4,8 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
-  gem 'rubocop'
+  # This provides some basic reporting on tests for CircleCI
+  gem 'minitest-ci', git: 'git@github.com:circleci/minitest-ci.git'
 end
+
+gem 'simplecov', require: false, group: :test
