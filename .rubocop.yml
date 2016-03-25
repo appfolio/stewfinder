@@ -29,5 +29,8 @@ Style/NumericLiterals:
 Style/RaiseArgs:
   Enabled: false
 
+Style/NegatedIf:
+  Enabled: false
+
 Style/SignalException:
   EnforcedStyle: only_raise
