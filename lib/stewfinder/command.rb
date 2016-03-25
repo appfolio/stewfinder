@@ -6,17 +6,17 @@ module Stewfinder
   # Provides the command line interface to Stewfinder
   class Command
     DOC = <<-DOC
-    stewfinder: A tool to help discover code stewards.
+stewfinder: A tool to help discover code stewards.
 
-    Usage:
-      stewfinder [options] [PATH]
-      stewfinder -h | --help
-      stewfinder --version
+Usage:
+  stewfinder [options] [PATH]
+  stewfinder -h | --help
+  stewfinder --version
 
-    Options:
-      --sort  Sort the output list.
+Options:
+  --sort  Sort the output list.
 
-    When PATH isn't provided stewfinder will use the present working directory.
+When PATH isn't provided stewfinder will use the present working directory.
     DOC
           .freeze
 
@@ -25,7 +25,7 @@ module Stewfinder
     end
 
     def run
-      options = Docopt.docopt(DOC, version: VERSION)
+      options = Docopt.docopt(DOC, argv: argv, version: VERSION)
       finder = Finder.new(File.absolute_path(options['PATH'] || Dir.pwd))
       finder.print_stewards(options['--sort'])
       @exit_status
@@ -37,9 +37,13 @@ module Stewfinder
 
     private
 
+    def argv
+      ARGV
+    end
+
     def exit_with_status(message, condition = true)
       puts message
-      @exit_status == 0 && condition ? 1 : @exit_status
+      @exit_status = condition ? 1 : @exit_status
     end
   end
 end
