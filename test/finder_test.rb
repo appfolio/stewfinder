@@ -19,6 +19,15 @@ module Stewfinder
       assert_equal %w(test2 test1), finder.find
     end
 
+    def test_find_relative_file
+      File.stubs(:exist?).returns(true)
+      YAML.stubs(:load_file).returns(loaded_stewfile)
+
+      finder = Finder.new('/home/test/git/stewfinder/relative_file')
+
+      assert_equal %w(test2 test1 relative_file), finder.find
+    end
+
     def test_find__with_regex
       File.stubs(:exist?).returns(true)
       YAML.stubs(:load_file).returns(loaded_stewfile)
@@ -110,7 +119,8 @@ module Stewfinder
         'test2',
         'test1',
         { 'github_username' => 'test_regex1', 'include' => ['*regex*'] },
-        { 'github_username' => 'test_regex2', 'include' => '*regex*' }
+        { 'github_username' => 'test_regex2', 'include' => '*regex*' },
+        { 'github_username' => 'relative_file', 'include' => 'relative_file' }
       ] }
     end
   end
